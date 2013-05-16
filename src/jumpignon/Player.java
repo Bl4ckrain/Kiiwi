@@ -2,15 +2,20 @@ package jumpignon;
 
 import org.newdawn.slick.*;
 
-public class Player {
+public class Player implements RenderItem{
     
     private int health;
     private int position_x;
     private int position_y;
     private int player_id;
-    private Image player_image;
     private int kill_score;
     private int death_score;
+    
+    // Infos zum Rendern
+    RenderItem follower;
+    int z_info;
+    private Image image;
+    
     
     
     public Player(int h_id, int h_x, int h_y)
@@ -47,9 +52,6 @@ public class Player {
         position_x = h_x;
         position_y = h_y;
     }
-    
-    /*Github Test*/
-    // heeey hooo
     
     
 }
