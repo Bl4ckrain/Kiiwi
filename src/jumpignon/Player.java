@@ -47,9 +47,5 @@ public class Player {
         position_x = h_x;
         position_y = h_y;
     }
-    
-    /*Github Test*/
-    // heeey hooo
-    
-    
+      
 }
