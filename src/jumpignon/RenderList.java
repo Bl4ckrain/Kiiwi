@@ -10,4 +10,14 @@ package jumpignon;
  */
 public class RenderList {
     
+    private RenderItem first;
+    
+    // Beim Init wird die Liste durchgegangen
+    // und anschließend jedes Bild geladen und
+    // dessen z_info gesetzt.
+    public void init()
+    {
+        
+    }
+    
 }
