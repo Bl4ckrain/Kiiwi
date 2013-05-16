@@ -8,11 +8,12 @@ import org.newdawn.slick.*;
  * @date 13.05.2013
  */
 public class Jumpignon extends BasicGame {
-    
+
+private RenderList renderlist;
 private Image image;
 public Jumpignon() {
 //Setzen des Fenstertitels
-super("Hello World");
+super("Jumpignon");
 }
 public static void main(String[] args) throws SlickException {
 AppGameContainer container = new AppGameContainer(new Jumpignon());
@@ -23,13 +24,14 @@ container.start();
 @Override
 public void init(GameContainer container) throws SlickException {
 //Bild logo.png aus dem Verzeichnis restest laden
-    image = new Image("restest/logo.png");
+//    image = new Image("resources/player_healthy.png");
+      
 }
 
 @Override
 public void render(GameContainer container, Graphics g) throws SlickException {
 //Text und Bild zeichnen
-    g.drawString("Hello World", 100, 100);
+    g.drawString("Jumpignon Test", 100, 100);
     g.drawImage(image, 300, 300);
 }
 
