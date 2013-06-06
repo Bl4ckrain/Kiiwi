@@ -2,7 +2,7 @@ package jumpignon;
 
 import org.newdawn.slick.*;
 
-public class Player implements RenderItem{
+public class Player extends RenderItem{
     
     private int health;
     private int position_x;

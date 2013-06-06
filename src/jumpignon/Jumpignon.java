@@ -24,8 +24,8 @@ container.start();
 @Override
 public void init(GameContainer container) throws SlickException {
 //Bild logo.png aus dem Verzeichnis restest laden
-//    image = new Image("resources/player_healthy.png");
-      
+    image = new Image("resources/player_healthy.png");
+    
 }
 
 @Override
