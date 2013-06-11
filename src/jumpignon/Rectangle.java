@@ -8,6 +8,7 @@ public class Rectangle extends RenderItem{
     private int width;
     private int rotation;
    
+    //
 //rotation muss nochmal gedacht werden ;) wegen collisoin
 public Rectangle(int x, int y, int height ,int  width ,int rotation ){
     this.pos_x = x;
