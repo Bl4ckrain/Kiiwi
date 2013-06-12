@@ -23,11 +23,11 @@ public class Map {
                 oFloor.setImage(iFloor);
                 
                 Image iRect = new Image("resources/rect_01.png");
-                Rectangle oRect = new Rectangle(300, 420-75, 75, 75, 0 );
+                Rectangle oRect = new Rectangle(300.0f, 420.0f-75.0f, 75, 75, 0 );
                 oRect.setImage(iRect);
                 
                 Image iRect2 = new Image("resources/rect_01.png");
-                Rectangle oRect2 = new Rectangle(500, 420-75, 75, 75, 0 );
+                Rectangle oRect2 = new Rectangle(500.0f, 420.0f-75.0f, 75, 75, 0 );
                 oRect2.setImage(iRect2);
                 
                 renderlist.addItem(oFloor);

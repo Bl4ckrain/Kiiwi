@@ -5,8 +5,6 @@ import org.newdawn.slick.*;
 public class Player extends RenderItem{
     
     private int health;
-    private int position_x;
-    private int position_y;
     private int player_id;
     private int kill_score;
     private int death_score;
@@ -24,8 +22,18 @@ public class Player extends RenderItem{
         player_id = h_id;
         kill_score = 0;
         death_score = 0;
+        width = 48;
+        height = 54;
         
         this.respawn(h_x, h_y);
+    }
+    
+    public void update(GameContainer container, int delta)
+    {
+        // [<-] Links bewegung
+        if(container.getInput().isKeyDown(Input.KEY_LEFT)){
+            pos_x -= 0.25f * delta;
+        }
     }
     
     public void loseHp()
@@ -49,8 +57,8 @@ public class Player extends RenderItem{
     
     public void respawn(int h_x, int h_y)
     {
-        position_x = h_x;
-        position_y = h_y;
+        pos_x = h_x;
+        pos_y = h_y;
     }
     
 }

@@ -10,15 +10,12 @@ import org.newdawn.slick.*;
 public class Jumpignon extends BasicGame {
 
 public RenderList renderlist;
-private Image image;
 private Map map;
 private Player player1;
 
 public Jumpignon() {
 //Setzen des Fenstertitels
     super("Jumpignon");
-    this.renderlist = new RenderList();
-    this.map = new Map(renderlist);
 }
 public static void main(String[] args) throws SlickException {
 AppGameContainer container = new AppGameContainer(new Jumpignon());
@@ -31,7 +28,14 @@ public void init(GameContainer container) throws SlickException {
 //Bild logo.png aus dem Verzeichnis restest laden
 //    image = new Image("resources/player_healthy.png");
     
-    map.loadMap(1);
+    this.renderlist = new RenderList();
+    this.map = new Map(renderlist);
+    
+    map.loadMap(1); // Beispiel Karte, kann später dynamisch jede Karte geladen werden
+    
+    Image p1I = new Image("resources/player_healthy.png");
+    player1 = new Player(1, 430, 420-54);
+    player1.setImage(p1I);
     
 }
 
@@ -41,16 +45,16 @@ public void render(GameContainer container, Graphics g) throws SlickException {
     g.drawString("Jumpignon Test", 100, 100);
 //    g.drawImage(image, 300, 300);
     renderlist.render(g);
+    player1.renderMe(g);
 }
 
 @Override
 public void update(GameContainer container, int delta) throws SlickException {
 //Animation: Bild rotieren
 //    image.rotate(0.05f);
-    if(container.getInput().isKeyPressed(Input.KEY_LEFT)){
-        
-    }
-//Tastenabfrage: Mit Esc-Taste das Spiel beenden
+    player1.update(container, delta);
+    
+//WENN [ESC] -> Spiel beenden.
     if(container.getInput().isKeyPressed(Input.KEY_ESCAPE)){
         container.exit();
     }

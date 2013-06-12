@@ -8,8 +8,10 @@ public abstract class RenderItem {
     RenderItem follower = null;
     int z_info = 1;
     Image image;
-    int pos_x;
-    int pos_y;
+    float pos_x;
+    float pos_y;
+    int height;
+    int width;
     
     public void setImage(Image a)
     {
