@@ -9,11 +9,14 @@ import org.newdawn.slick.*;
  */
 public class Jumpignon extends BasicGame {
 
-private RenderList renderlist;
+public RenderList renderlist;
 private Image image;
+private Map map;
 public Jumpignon() {
 //Setzen des Fenstertitels
-super("Jumpignon");
+    super("Jumpignon");
+    this.renderlist = new RenderList();
+    this.map = new Map(renderlist);
 }
 public static void main(String[] args) throws SlickException {
 AppGameContainer container = new AppGameContainer(new Jumpignon());
@@ -24,7 +27,9 @@ container.start();
 @Override
 public void init(GameContainer container) throws SlickException {
 //Bild logo.png aus dem Verzeichnis restest laden
-    image = new Image("resources/player_healthy.png");
+//    image = new Image("resources/player_healthy.png");
+    
+    map.loadMap(1);
     
 }
 
@@ -32,13 +37,14 @@ public void init(GameContainer container) throws SlickException {
 public void render(GameContainer container, Graphics g) throws SlickException {
 //Text und Bild zeichnen
     g.drawString("Jumpignon Test", 100, 100);
-    g.drawImage(image, 300, 300);
+//    g.drawImage(image, 300, 300);
+    renderlist.render(g);
 }
 
 @Override
 public void update(GameContainer container, int delta) throws SlickException {
 //Animation: Bild rotieren
-    image.rotate(0.05f);
+//    image.rotate(0.05f);
 //Tastenabfrage: Mit Esc-Taste das Spiel beenden
     if(container.getInput().isKeyPressed(Input.KEY_ESCAPE)){
         container.exit();

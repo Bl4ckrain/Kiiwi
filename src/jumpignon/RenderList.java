@@ -4,6 +4,8 @@
  */
 package jumpignon;
 
+import org.newdawn.slick.*;
+
 /**
  *
  * @author Max
@@ -35,6 +37,14 @@ public class RenderList {
     public void init()
     {
         first = null;
+    }
+    
+    public void render(Graphics g) throws SlickException
+    {
+        if(first != null)
+        {
+            first.renderMe(g);
+        }
     }
     
 }

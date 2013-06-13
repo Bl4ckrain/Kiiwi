@@ -7,7 +7,14 @@ public abstract class RenderItem {
     
     RenderItem follower = null;
     int z_info = 1;
-    Image image = null;
+    Image image;
+    int pos_x;
+    int pos_y;
+    
+    public void setImage(Image a)
+    {
+        image = a;
+    }
     
     public void addFollower(RenderItem a)
     {
@@ -18,6 +25,17 @@ public abstract class RenderItem {
         else
         {
             follower.addFollower(a);
+        }
+    }
+    
+    // Rendert sich selbst und ruft die Methode beim Nachfolger auf
+    public void renderMe(Graphics g) throws SlickException
+    {
+        g.drawImage(image, pos_x, pos_y);
+        
+        if(this.follower != null)
+        {
+            this.follower.renderMe(g);
         }
     }
     
