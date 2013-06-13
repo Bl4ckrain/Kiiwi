@@ -12,6 +12,8 @@ public class Jumpignon extends BasicGame {
 public RenderList renderlist;
 private Image image;
 private Map map;
+private Player player1;
+
 public Jumpignon() {
 //Setzen des Fenstertitels
     super("Jumpignon");
@@ -45,6 +47,9 @@ public void render(GameContainer container, Graphics g) throws SlickException {
 public void update(GameContainer container, int delta) throws SlickException {
 //Animation: Bild rotieren
 //    image.rotate(0.05f);
+    if(container.getInput().isKeyPressed(Input.KEY_LEFT)){
+        
+    }
 //Tastenabfrage: Mit Esc-Taste das Spiel beenden
     if(container.getInput().isKeyPressed(Input.KEY_ESCAPE)){
         container.exit();
