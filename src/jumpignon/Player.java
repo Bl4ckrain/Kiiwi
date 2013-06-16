@@ -8,6 +8,9 @@ public class Player extends RenderItem{
     private int player_id;
     private int kill_score;
     private int death_score;
+    private float y_velocity;
+    private float x_velocity;
+    private boolean isInAir;
     
     // Infos zum Rendern
     RenderItem follower;
@@ -24,16 +27,45 @@ public class Player extends RenderItem{
         death_score = 0;
         width = 48;
         height = 54;
+        isInAir = false;
+        y_velocity = 0.0f;
         
         this.respawn(h_x, h_y);
     }
     
     public void update(GameContainer container, int delta)
     {
+        if( y_velocity > 0 )
+        {
+            y_velocity -= 0.5f * delta;
+        }
         // [<-] Links bewegung
         if(container.getInput().isKeyDown(Input.KEY_LEFT)){
-            pos_x -= 0.25f * delta;
+            pos_x -= 1.25f * delta;
         }
+        // [<-] Rechts bewegung
+        if(container.getInput().isKeyDown(Input.KEY_RIGHT)){
+            pos_x += 1.25f * delta;
+        }
+        // [↕] Oben bewegung
+        if(container.getInput().isKeyPressed(Input.KEY_UP)){
+            y_velocity += 15.0f * delta;
+            isInAir = true;
+        }
+        
+        if(isInAir == true)
+        {
+            pos_y += 0.5f * delta;
+        }
+        
+        if(pos_y > 420-54)
+        {
+            isInAir = false;
+            y_velocity = 0;   
+            pos_y = 420-54;
+        }
+        
+        pos_y -= y_velocity;
     }
     
     public void loseHp()
