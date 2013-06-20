@@ -47,4 +47,12 @@ public class RenderList {
         }
     }
     
+    public void checkCollisions(Player p1)
+    {
+        if(first != null)
+        {
+            first.checkCollision(p1);
+        }
+    }
+    
 }

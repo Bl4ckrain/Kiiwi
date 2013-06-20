@@ -10,11 +10,11 @@ public class Rectangle extends RenderItem{
    
     //
 //rotation muss nochmal gedacht werden ;) wegen collisoin
-public Rectangle(float x, float y, int height ,int  width ,int rotation ){
-    this.pos_x = x;
-    this.pos_y = y;
-    this.height = height;
-    this.width = width;
-    this.rotation = rotation;
+public Rectangle(float gx, float gy, int gwidth ,int  gheight ,int grotation ){
+    this.pos_x = gx;
+    this.pos_y = gy;
+    this.width = gwidth;
+    this.height = gheight;
+    this.rotation = grotation;
 }
 }

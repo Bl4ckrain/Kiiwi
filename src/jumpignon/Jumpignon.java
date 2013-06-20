@@ -20,6 +20,7 @@ public Jumpignon() {
 public static void main(String[] args) throws SlickException {
 AppGameContainer container = new AppGameContainer(new Jumpignon());
     container.setDisplayMode(925, 520, false);
+    container.setTargetFrameRate(75);           // Maximale FPS: 75
 container.start();
 }
 
@@ -50,9 +51,12 @@ public void render(GameContainer container, Graphics g) throws SlickException {
 
 @Override
 public void update(GameContainer container, int delta) throws SlickException {
-//Animation: Bild rotieren
-//    image.rotate(0.05f);
+
+//Auf Eingaben von Spieler 1 reagieren
     player1.update(container, delta);
+    
+//Kollisionen prüfen
+    renderlist.checkCollisions(player1);
     
 //WENN [ESC] -> Spiel beenden.
     if(container.getInput().isKeyPressed(Input.KEY_ESCAPE)){

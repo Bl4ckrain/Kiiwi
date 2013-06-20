@@ -33,23 +33,46 @@ public class Player extends RenderItem{
         this.respawn(h_x, h_y);
     }
     
+    public boolean isFalling()
+    {
+        if(isInAir == true)
+        {
+            if(y_velocity > 0)  // Der Spieler springt offensichtlich
+            {
+                return false;
+            }
+            else    // Nur wenn eine Abwärtsbewegung stattfindet fällt der Spieler tatsächlich
+            {
+                return true;
+            }
+        }
+        else{ return false; }
+    }
+    
+    public void bottomCollisionWithObject(RenderItem i1)
+    {
+        isInAir = false;            // der Spieler muss zuvor gesprungen sein, also wird dieser Zustand gelöscht
+        y_velocity = 0.0f;          // die Gravitation greift nicht wenn der Spieler auf einem Objekt steht
+        this.pos_y = i1.pos_y - (this.height);      // der Spieler soll auf dem Objekt stehen
+    }
+    
     public void update(GameContainer container, int delta)
     {
         // [<-] Links bewegung
         if(container.getInput().isKeyDown(Input.KEY_LEFT)){
-            pos_x -= 1.25f * delta;
+            pos_x -= 0.5f * delta;
         }
         // [<-] Rechts bewegung
         if(container.getInput().isKeyDown(Input.KEY_RIGHT)){
-            pos_x += 1.25f * delta;
+            pos_x += 0.5f * delta;
         }
         // [↕] Oben bewegung
-        if(container.getInput().isKeyPressed(Input.KEY_UP)){
+        if(container.getInput().isKeyPressed(Input.KEY_UP) && isInAir == false){
             y_velocity = 1.0f * delta;
             isInAir = true;
         }
         
-        if(isInAir == true)
+        if(isInAir == true && y_velocity >= -12.0f)
         {
             y_velocity -= 0.05f * delta;
         }
