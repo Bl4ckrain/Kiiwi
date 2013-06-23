@@ -35,10 +35,6 @@ public class Player extends RenderItem{
     
     public void update(GameContainer container, int delta)
     {
-        if( y_velocity > 0 )
-        {
-            y_velocity -= 0.5f * delta;
-        }
         // [<-] Links bewegung
         if(container.getInput().isKeyDown(Input.KEY_LEFT)){
             pos_x -= 1.25f * delta;
@@ -49,20 +45,13 @@ public class Player extends RenderItem{
         }
         // [↕] Oben bewegung
         if(container.getInput().isKeyPressed(Input.KEY_UP)){
-            y_velocity += 15.0f * delta;
+            y_velocity = 1.0f * delta;
             isInAir = true;
         }
         
         if(isInAir == true)
         {
-            pos_y += 0.5f * delta;
-        }
-        
-        if(pos_y > 420-54)
-        {
-            isInAir = false;
-            y_velocity = 0;   
-            pos_y = 420-54;
+            y_velocity -= 0.05f * delta;
         }
         
         pos_y -= y_velocity;
