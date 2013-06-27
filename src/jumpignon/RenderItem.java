@@ -65,9 +65,11 @@ public abstract class RenderItem {
         {
             p1.bottomCollisionWithObject(this);
         }
-        else if( this.pos_y == ( p1.get_height() + p1.get_pos_y() )      &&
-                (linkerRandObjekt > rechterRandPlayer                    ||
-                  rechterRandObjekt < linkerRandPlayer)                  &&
+        else if( this.pos_y == ( p1.get_height() + p1.get_pos_y() )      &&          
+                (linkerRandObjekt >= rechterRandPlayer                   &&
+                linkerRandObjekt <= rechterRandPlayer +7)                ||
+                (rechterRandObjekt <= linkerRandPlayer                   &&
+                rechterRandObjekt >= linkerRandPlayer -7)                &&
                  p1.isFalling() == false  ) 
         {
             p1.setFalling();

@@ -5,6 +5,7 @@ import org.newdawn.slick.*;
 /**
  *
  * @author Marius Kuchenbecker, Johannes Hitzinger, Max Sommer
+ * @class Q11/inf
  * @date 13.05.2013
  */
 public class Jumpignon extends BasicGame {
@@ -47,8 +48,7 @@ public void init(GameContainer container) throws SlickException {
 @Override
 public void render(GameContainer container, Graphics g) throws SlickException {
 //Text und Bild zeichnen
-    g.drawString("Jumpignon Test", 100, 100);
-//    g.drawImage(image, 300, 300);
+    g.drawString("Jumpignon Multiplayer Alpha", 25, 25);
     renderlist.render(g);
     player1.renderMe(g);
     player2.renderMe(g);

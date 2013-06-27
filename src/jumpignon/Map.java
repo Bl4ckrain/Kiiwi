@@ -23,26 +23,36 @@ public class Map {
                 oFloor.setImage(iFloor);
                 
                 Image iRect = new Image("resources/rect_01.png");
-                Rectangle oRect = new Rectangle(300.0f, 420.0f-75.0f, 75, 75, 0 );
+                Rectangle oRect = new Rectangle(100.0f, 420.0f-75.0f, 75, 75, 0 );
                 oRect.setImage(iRect);
                 
                 Image iRect2 = new Image("resources/rect_01.png");
-                Rectangle oRect2 = new Rectangle(500.0f, 420.0f-75.0f, 75, 75, 0 );
+                Rectangle oRect2 = new Rectangle(300.0f, 420.0f-75.0f, 75, 75, 0 );
                 oRect2.setImage(iRect2);
                 
                 Image iRect3 = new Image("resources/rect_01.png");
-                Rectangle oRect3 = new Rectangle(700.0f, 420.0f-75.0f, 75, 75, 0 );
+                Rectangle oRect3 = new Rectangle(500.0f, 420.0f-75.0f, 75, 75, 0 );
                 oRect3.setImage(iRect3);
                 
                 Image iRect4 = new Image("resources/rect_01.png");
-                Rectangle oRect4 = new Rectangle(100.0f, 420.0f-75.0f, 75, 75, 0 );
+                Rectangle oRect4 = new Rectangle(700.0f, 420.0f-75.0f, 75, 75, 0 );
                 oRect4.setImage(iRect4);
                 
+                Image iRect5 = new Image("resources/rect_02.png");
+                Rectangle oRect5 = new Rectangle(150.0f, 420.0f-200.0f, 150, 75, 0 );
+                oRect5.setImage(iRect5);
+                
+                Image iRect6 = new Image("resources/rect_02.png");
+                Rectangle oRect6 = new Rectangle(450.0f, 420.0f-200.0f, 150, 75, 0 );
+                oRect6.setImage(iRect6);
+                
                 renderlist.addItem(oFloor);
-                renderlist.addItem(oRect4);
                 renderlist.addItem(oRect);
                 renderlist.addItem(oRect2);
                 renderlist.addItem(oRect3);
+                renderlist.addItem(oRect4);
+                renderlist.addItem(oRect5);
+                renderlist.addItem(oRect6);
                 
             break;
                   

@@ -62,17 +62,20 @@ public class Player extends RenderItem{
     
     public void update(GameContainer container, int delta)
     {
+        if(isInAir == true) {x_velocity = 0.35f;}
+        else                {x_velocity = 0.5f;}
+        
         switch(player_id)
         {
             case(1):
                    
             // [<-] Links bewegung
             if(container.getInput().isKeyDown(Input.KEY_LEFT)){
-               pos_x -= 0.5f * delta;
+               pos_x -= x_velocity * delta;
             }
             // [<-] Rechts bewegung
             if(container.getInput().isKeyDown(Input.KEY_RIGHT)){
-                pos_x += 0.5f * delta;
+                pos_x += x_velocity * delta;
             }
             // [↕] Oben bewegung
             if(container.getInput().isKeyPressed(Input.KEY_UP) && isInAir == false){
