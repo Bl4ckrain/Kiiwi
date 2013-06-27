@@ -55,14 +55,16 @@ public void init(GameContainer container) throws SlickException {
 @Override
 public void render(GameContainer container, Graphics g) throws SlickException {
 //Text und Bild zeichnen
-    g.setColor(Color.white);
-    g.drawString("Jumpignon Multiplayer Alpha", 25, 25);
+    
+    map.drawMapBackground(g);
     renderlist.render(g);
     player1.renderMe(g);
     player2.renderMe(g);
     
+    
     g.setColor(Color.orange);
     g.drawString("Spieler 1: " + player1.showKills() + " / " + player1.showDeaths(), 25, 440);
+    
     g.setColor(Color.blue);
     g.drawString("Spieler 2: " + player2.showKills() + " / " + player2.showDeaths(), 750, 440);
 }
@@ -81,6 +83,11 @@ public void update(GameContainer container, int delta) throws SlickException {
 //Kollisionen prüfen zwischen den Playern
     player1.checkBottomCollisionWithPlayer(player2);
     player2.checkBottomCollisionWithPlayer(player1);
+    
+//WENN [R] -> Spiel neustarten.
+    if(container.getInput().isKeyPressed(Input.KEY_R)){
+        this.init(container);
+    }
     
 //WENN [ESC] -> Spiel beenden.
     if(container.getInput().isKeyPressed(Input.KEY_ESCAPE)){
