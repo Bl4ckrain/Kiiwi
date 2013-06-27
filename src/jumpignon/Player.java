@@ -17,11 +17,12 @@ public class Player extends RenderItem{
     int z_info;
     private Image image;
     private Image image2;
+    private Image image3;
     
     
     public Player(int h_id, int h_x, int h_y)
     {
-        health = 2;
+        health = 3;
         player_id = h_id;
         kill_score = 0;
         death_score = 0;
@@ -33,7 +34,7 @@ public class Player extends RenderItem{
         this.respawn(h_x, h_y);
     }
   
-    public void setImage(Image a, Image b){image = a;image2 = b;}
+    public void setImage(Image a, Image b, Image c){image = a;image2 = b;image3 = c;}
     
     public int showKills(){return kill_score;}
     
@@ -68,8 +69,9 @@ public class Player extends RenderItem{
     @Override
     public void renderMe(Graphics g) throws SlickException
     {
-        if(health == 2){g.drawImage(image, pos_x, pos_y);}
-        else if(health ==1){g.drawImage(image2, pos_x, pos_y);}
+        if(health == 3){g.drawImage(image, pos_x, pos_y);}
+        else if(health == 2){g.drawImage(image2, pos_x, pos_y);}
+        else if(health ==1){g.drawImage(image3, pos_x, pos_y);}
         
         if(this.follower != null)
         {
@@ -129,7 +131,7 @@ public class Player extends RenderItem{
                 pos_x += x_velocity * delta;
             }
             // [↕] Oben bewegung
-            if(container.getInput().isKeyPressed(Input.KEY_UP) && isInAir == false){
+            if(container.getInput().isKeyDown(Input.KEY_UP) && isInAir == false){
                 y_velocity = 1.0f * delta;
                isInAir = true;
             }
@@ -146,7 +148,7 @@ public class Player extends RenderItem{
                 pos_x += 0.5f * delta;
             }
             // [↕] Oben bewegung
-            if(container.getInput().isKeyPressed(Input.KEY_W) && isInAir == false){
+            if(container.getInput().isKeyDown(Input.KEY_W) && isInAir == false){
                 y_velocity = 1.0f * delta;
                isInAir = true;
             }
@@ -199,7 +201,7 @@ public class Player extends RenderItem{
     {
         pos_x = h_x;
         pos_y = h_y;
-        health = 2;
+        health = 3;
     }
     
 }

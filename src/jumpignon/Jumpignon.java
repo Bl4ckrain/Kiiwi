@@ -37,23 +37,33 @@ public void init(GameContainer container) throws SlickException {
     
     map.loadMap(1); // Beispiel Karte, kann später dynamisch jede Karte geladen werden
     
-    Image p1I = new Image("resources/player_healthy.png");
-    Image p2I = new Image("resources/player_unhealthy.png");
+    Image p1I1 = new Image("resources/player1/player_healthy.png");
+    Image p1I2 = new Image("resources/player1/player_unhealthy.png");
+    Image p1I3 = new Image("resources/player1/player_most_unhealthy.png");
+    
+    Image p2I1 = new Image("resources/player2/player_healthy.png");
+    Image p2I2 = new Image("resources/player2/player_unhealthy.png");
+    Image p2I3 = new Image("resources/player2/player_most_unhealthy.png");
+    
     player1 = new Player(1, 114, 420-54);
     player2 = new Player(2, 714, 420-54);
-    player1.setImage(p1I, p2I);
-    player2.setImage(p1I, p2I);
+    player1.setImage(p1I1, p1I2, p1I3);
+    player2.setImage(p2I1, p2I2, p2I3);
     
 }
 
 @Override
 public void render(GameContainer container, Graphics g) throws SlickException {
 //Text und Bild zeichnen
+    g.setColor(Color.white);
     g.drawString("Jumpignon Multiplayer Alpha", 25, 25);
     renderlist.render(g);
     player1.renderMe(g);
     player2.renderMe(g);
+    
+    g.setColor(Color.orange);
     g.drawString("Spieler 1: " + player1.showKills() + " / " + player1.showDeaths(), 25, 440);
+    g.setColor(Color.blue);
     g.drawString("Spieler 2: " + player2.showKills() + " / " + player2.showDeaths(), 750, 440);
 }
 
