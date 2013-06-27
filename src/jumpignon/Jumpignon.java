@@ -23,6 +23,7 @@ public static void main(String[] args) throws SlickException {
 AppGameContainer container = new AppGameContainer(new Jumpignon());
     container.setDisplayMode(925, 520, false);
     container.setTargetFrameRate(75);           // Maximale FPS: 75
+    container.setShowFPS(false);
 container.start();
 }
 
@@ -38,8 +39,8 @@ public void init(GameContainer container) throws SlickException {
     
     Image p1I = new Image("resources/player_healthy.png");
     Image p2I = new Image("resources/player_unhealthy.png");
-    player1 = new Player(1, 100, 420-54);
-    player2 = new Player(2, 700, 420-54);
+    player1 = new Player(1, 114, 420-54);
+    player2 = new Player(2, 714, 420-54);
     player1.setImage(p1I, p2I);
     player2.setImage(p1I, p2I);
     
