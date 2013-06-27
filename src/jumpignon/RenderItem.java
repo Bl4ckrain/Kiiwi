@@ -75,9 +75,6 @@ public abstract class RenderItem {
             p1.setFalling();
         }
         
-        
-       
-        
         if(this.follower != null)
         {
             this.follower.checkCollision(p1);

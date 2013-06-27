@@ -37,11 +37,11 @@ public void init(GameContainer container) throws SlickException {
     map.loadMap(1); // Beispiel Karte, kann später dynamisch jede Karte geladen werden
     
     Image p1I = new Image("resources/player_healthy.png");
-    Image p2I = new Image("resources/player_healthy.png");
-    player1 = new Player(1, 430, 420-54);
-    player2 = new Player(2, 100, 420-54);
-    player1.setImage(p1I);
-    player2.setImage(p2I);
+    Image p2I = new Image("resources/player_unhealthy.png");
+    player1 = new Player(1, 100, 420-54);
+    player2 = new Player(2, 700, 420-54);
+    player1.setImage(p1I, p2I);
+    player2.setImage(p1I, p2I);
     
 }
 
@@ -52,18 +52,24 @@ public void render(GameContainer container, Graphics g) throws SlickException {
     renderlist.render(g);
     player1.renderMe(g);
     player2.renderMe(g);
+    g.drawString("Spieler 1: " + player1.showKills() + " / " + player1.showDeaths(), 25, 440);
+    g.drawString("Spieler 2: " + player2.showKills() + " / " + player2.showDeaths(), 750, 440);
 }
 
 @Override
 public void update(GameContainer container, int delta) throws SlickException {
 
-//Auf Eingaben von Spieler 1 reagieren
+//Auf Eingaben von Spielern reagieren
     player1.update(container, delta);
     player2.update(container, delta);
     
-//Kollisionen prüfen
+//Kollisionen prüfen zwischen den Playern und Objekten
     renderlist.checkCollisions(player1);
     renderlist.checkCollisions(player2);
+
+//Kollisionen prüfen zwischen den Playern
+    player1.checkBottomCollisionWithPlayer(player2);
+    player2.checkBottomCollisionWithPlayer(player1);
     
 //WENN [ESC] -> Spiel beenden.
     if(container.getInput().isKeyPressed(Input.KEY_ESCAPE)){

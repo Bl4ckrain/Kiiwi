@@ -16,6 +16,7 @@ public class Player extends RenderItem{
     RenderItem follower;
     int z_info;
     private Image image;
+    private Image image2;
     
     
     public Player(int h_id, int h_x, int h_y)
@@ -31,6 +32,12 @@ public class Player extends RenderItem{
         
         this.respawn(h_x, h_y);
     }
+  
+    public void setImage(Image a, Image b){image = a;image2 = b;}
+    
+    public int showKills(){return kill_score;}
+    
+    public int showDeaths(){return death_score;}
     
     public boolean isFalling()
     {
@@ -48,9 +55,53 @@ public class Player extends RenderItem{
         else{ return false; }
     }
     
+    public void jump()
+    {
+        y_velocity = 12.0f;
+    }
+    
     public void setFalling()
     {
         isInAir = true;
+    }
+    
+    @Override
+    public void renderMe(Graphics g) throws SlickException
+    {
+        if(health == 2){g.drawImage(image, pos_x, pos_y);}
+        else if(health ==1){g.drawImage(image2, pos_x, pos_y);}
+        
+        if(this.follower != null)
+        {
+            this.follower.renderMe(g);
+        }
+    }
+    
+    public void checkBottomCollisionWithPlayer(Player p1)
+    {
+        float linkerRandPlayer1 = this.pos_x;
+        float rechterRandPlayer1 = this.pos_x + this.width;
+        
+        float linkerRandPlayer2 = p1.pos_x;
+        float rechterRandPlayer2 = p1.pos_x + p1.width;
+        
+        if(     this.pos_y <= ( p1.get_height() + p1.get_pos_y() )        &&
+                this.pos_y >= ( p1.get_height() + p1.get_pos_y() - 25)    &&
+                linkerRandPlayer1 <= rechterRandPlayer2                   &&
+                rechterRandPlayer1 >= linkerRandPlayer2                   &&
+                
+                p1.isFalling() == true  ) 
+            
+        {
+            if(this.health == 1){p1.gainKill();}
+            p1.jump();
+            this.loseHp();
+        }
+    }
+    
+    public void gainKill()
+    {
+        kill_score += 1;
     }
     
     public void bottomCollisionWithObject(RenderItem i1)
@@ -118,7 +169,21 @@ public class Player extends RenderItem{
         if(health == 0)
         {
             death_score++;
-            
+            int respawn_x;
+            switch(player_id)
+            {
+                case(1):
+                    respawn_x = 100;
+                break;
+                case(2):
+                    respawn_x = 700;
+                break;
+                default:
+                    respawn_x = 450;
+                break;
+                        
+            }
+            this.respawn(respawn_x, 420-54);      // PLAYER 1 KONSTANTE!!
         }
     }
     
@@ -134,6 +199,7 @@ public class Player extends RenderItem{
     {
         pos_x = h_x;
         pos_y = h_y;
+        health = 2;
     }
     
 }
