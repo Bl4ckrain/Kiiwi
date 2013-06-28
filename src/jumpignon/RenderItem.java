@@ -49,17 +49,24 @@ public abstract class RenderItem {
     // Überprüft ob eine Kollision mit einem Player vorliegt und wenn ja was für eine
     public void checkCollision(Player p1)
     {
+        float linkerRandObjekt = this.pos_x;
+        float rechterRandObjekt = this.pos_x + this.width;
         
-        if(     this.pos_y <= ( p1.get_height() + p1.get_pos_y() - 5 )      && 
-                
-                
-                this.pos_x <= ( p1.get_width()  + p1.get_pos_x() )          &&  
-               (this.pos_x + this.width) >= p1.get_pos_x()                  &&  
+        float linkerRandPlayer = p1.pos_x;
+        float rechterRandPlayer = p1.pos_x + p1.width;
+        
+        if(     this.pos_y <= ( p1.get_height() + p1.get_pos_y() )      &&
+                linkerRandObjekt <= rechterRandPlayer                   &&
+                rechterRandObjekt >= linkerRandPlayer                   &&
                 
                 p1.isFalling() == true  ) 
+            
         {
             p1.bottomCollisionWithObject(this);
         }
+        
+        
+       
         
         if(this.follower != null)
         {
