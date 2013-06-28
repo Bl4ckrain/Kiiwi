@@ -49,6 +49,11 @@ public class Player extends RenderItem{
         else{ return false; }
     }
     
+    public void setFalling()
+    {
+        isInAir = true;
+    }
+    
     public void bottomCollisionWithObject(RenderItem i1)
     {
         isInAir = false;            // der Spieler muss zuvor gesprungen sein, also wird dieser Zustand gelöscht

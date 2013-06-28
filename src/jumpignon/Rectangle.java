@@ -3,10 +3,7 @@ package jumpignon;
 import org.newdawn.slick.*;
 
 public class Rectangle extends RenderItem{
-    private Image image;
-    private int height;
-    private int width;
-    private int rotation;
+    int rotation;
    
     //
 //rotation muss nochmal gedacht werden ;) wegen collisoin
