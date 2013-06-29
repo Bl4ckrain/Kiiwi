@@ -6,6 +6,7 @@ public class Map {
     
     private Image background;
     private RenderList renderlist;
+    private int mapID;
     
     public Map(RenderList nRenderlist)
     {
@@ -17,9 +18,10 @@ public class Map {
         g.drawImage(background, 0, 0);
     }
     
-    public void loadMap(int mapname) throws SlickException
+    public void loadMap(int mapid) throws SlickException
     {
-        switch(mapname)
+        this.mapID = mapid;
+        switch(mapid)
         {
             case(1):
                 
@@ -68,5 +70,17 @@ public class Map {
         
     }
     
-    
+    public void update(Timer timer)
+    {
+        switch(mapID)
+        {
+            
+            case(1):
+                
+                
+                
+            break;
+            
+        }        
+    }
 }

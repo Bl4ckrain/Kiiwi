@@ -15,6 +15,7 @@ private Map map;
 private Player player1;
 private Player player2;
 private Timer timer;
+private boolean tensecs;
 
 public Jumpignon() {
 //Setzen des Fenstertitels
@@ -75,6 +76,9 @@ public void render(GameContainer container, Graphics g) throws SlickException {
 
 @Override
 public void update(GameContainer container, int delta) throws SlickException {
+    
+//Map updaten
+    map.update(timer);
 
 //Auf Eingaben von Spielern reagieren
     player1.update(container, delta);
