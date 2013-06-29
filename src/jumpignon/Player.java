@@ -11,6 +11,9 @@ public class Player extends RenderItem{
     private float y_velocity;
     private float x_velocity;
     private boolean isInAir;
+    private Sound jumpSound;
+    private Sound loseHealthSound;
+    private Sound dieSound;
     
     // Infos zum Rendern
     RenderItem follower;
@@ -20,7 +23,7 @@ public class Player extends RenderItem{
     private Image image3;
     
     
-    public Player(int h_id, int h_x, int h_y)
+    public Player(int h_id, int h_x, int h_y) throws SlickException
     {
         health = 3;
         player_id = h_id;
@@ -30,6 +33,9 @@ public class Player extends RenderItem{
         height = 54;
         isInAir = false;
         y_velocity = 0.0f;
+        jumpSound = new Sound("resources/sound/player_jump.wav");
+        loseHealthSound = new Sound("resources/sound/player_lose_health.wav");
+        dieSound = new Sound("resources/sound/player_die.wav");
         
         this.respawn(h_x, h_y);
     }
@@ -64,7 +70,9 @@ public class Player extends RenderItem{
     public void die()
     {
         death_score += 1;
+        dieSound.play();
         respawn(getSpawnPoint(player_id), 420-height);
+        
     }
     
     public void setFalling()
@@ -139,7 +147,8 @@ public class Player extends RenderItem{
             // [↕] Oben bewegung
             if(container.getInput().isKeyDown(Input.KEY_UP) && isInAir == false){
                 y_velocity = 1.0f * delta;
-               isInAir = true;
+                isInAir = true;
+                jumpSound.play();
             }
             
             break;
@@ -157,6 +166,7 @@ public class Player extends RenderItem{
             if(container.getInput().isKeyDown(Input.KEY_W) && isInAir == false){
                 y_velocity = 1.0f * delta;
                isInAir = true;
+                jumpSound.play();
             }
             
             break;
@@ -186,10 +196,12 @@ public class Player extends RenderItem{
     public void loseHp()
     {
         health -= 1;
+        loseHealthSound.play();
         
         if(health == 0)
         {
             death_score++;
+            dieSound.play();
             int respawn_x = getSpawnPoint(player_id);
             this.respawn(respawn_x, 420-54);      // PLAYER 1 KONSTANTE!!
         }
