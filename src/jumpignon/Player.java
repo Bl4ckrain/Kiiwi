@@ -61,6 +61,12 @@ public class Player extends RenderItem{
         y_velocity = 12.0f;
     }
     
+    public void die()
+    {
+        death_score += 1;
+        respawn(getSpawnPoint(player_id), 420-height);
+    }
+    
     public void setFalling()
     {
         isInAir = true;
@@ -164,6 +170,19 @@ public class Player extends RenderItem{
         pos_y -= y_velocity;
     }
     
+    public int getSpawnPoint(int pid)
+    {
+       switch(pid)
+            {
+                case(1):
+                    return 100;
+                case(2):
+                    return 700;
+                default:
+                    return 450;       
+            }
+    }
+    
     public void loseHp()
     {
         health -= 1;
@@ -171,20 +190,7 @@ public class Player extends RenderItem{
         if(health == 0)
         {
             death_score++;
-            int respawn_x;
-            switch(player_id)
-            {
-                case(1):
-                    respawn_x = 100;
-                break;
-                case(2):
-                    respawn_x = 700;
-                break;
-                default:
-                    respawn_x = 450;
-                break;
-                        
-            }
+            int respawn_x = getSpawnPoint(player_id);
             this.respawn(respawn_x, 420-54);      // PLAYER 1 KONSTANTE!!
         }
     }

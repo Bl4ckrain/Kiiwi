@@ -1,24 +1,26 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package jumpignon;
 
-    
-/**
- *
- * @author Blackrain
- */
 public class Timer {
     boolean running;
-    private int time;
+    private long starttime;
+    private long time;
+    
+    public Timer()
+    {
+        starttime = System.currentTimeMillis();
+    }
     
     public void Reset(){
-    this.time = 0;
+    this.starttime = 0;
     this.running = false;
 }
-    public int get_Time(){
-    return this.time;
+    public long getTime(){
+    return System.currentTimeMillis();
+    }
+    
+    public long getStartTime()
+    {
+        return starttime;
     }
 }
 

@@ -14,17 +14,20 @@ public RenderList renderlist;
 private Map map;
 private Player player1;
 private Player player2;
+private Timer timer;
 
 public Jumpignon() {
 //Setzen des Fenstertitels
     super("Jumpignon");
 }
 public static void main(String[] args) throws SlickException {
+    
 AppGameContainer container = new AppGameContainer(new Jumpignon());
     container.setDisplayMode(925, 520, false);
     container.setTargetFrameRate(75);           // Maximale FPS: 75
     container.setShowFPS(false);
-container.start();
+    container.start();
+
 }
 
 @Override
@@ -32,6 +35,7 @@ public void init(GameContainer container) throws SlickException {
 //Bild logo.png aus dem Verzeichnis restest laden
 //    image = new Image("resources/player_healthy.png");
     
+    this.timer = new Timer();
     this.renderlist = new RenderList();
     this.map = new Map(renderlist);
     
