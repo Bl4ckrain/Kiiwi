@@ -27,7 +27,7 @@ public class Map {
                 oRect.setImage(iRect);
                 
                 Image iRect2 = new Image("resources/rect_01.png");
-                Rectangle oRect2 = new Rectangle(500.0f, 420.0f-125.0f, 75, 75, 0 );
+                Rectangle oRect2 = new Rectangle(500.0f, 420.0f-75.0f, 75, 75, 0 );
                 oRect2.setImage(iRect2);
                 
                 Image iRect3 = new Image("resources/rect_01.png");
@@ -39,10 +39,10 @@ public class Map {
                 oRect4.setImage(iRect4);
                 
                 renderlist.addItem(oFloor);
+                renderlist.addItem(oRect4);
                 renderlist.addItem(oRect);
                 renderlist.addItem(oRect2);
                 renderlist.addItem(oRect3);
-                renderlist.addItem(oRect4);
                 
             break;
                   

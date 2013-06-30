@@ -18,7 +18,6 @@ public class Player extends RenderItem{
     private Image image;
     
     
-    
     public Player(int h_id, int h_x, int h_y)
     {
         health = 2;
@@ -63,18 +62,42 @@ public class Player extends RenderItem{
     
     public void update(GameContainer container, int delta)
     {
-        // [<-] Links bewegung
-        if(container.getInput().isKeyDown(Input.KEY_LEFT)){
-            pos_x -= 0.5f * delta;
-        }
-        // [<-] Rechts bewegung
-        if(container.getInput().isKeyDown(Input.KEY_RIGHT)){
-            pos_x += 0.5f * delta;
-        }
-        // [↕] Oben bewegung
-        if(container.getInput().isKeyPressed(Input.KEY_UP) && isInAir == false){
-            y_velocity = 1.0f * delta;
-            isInAir = true;
+        switch(player_id)
+        {
+            case(1):
+                   
+            // [<-] Links bewegung
+            if(container.getInput().isKeyDown(Input.KEY_LEFT)){
+               pos_x -= 0.5f * delta;
+            }
+            // [<-] Rechts bewegung
+            if(container.getInput().isKeyDown(Input.KEY_RIGHT)){
+                pos_x += 0.5f * delta;
+            }
+            // [↕] Oben bewegung
+            if(container.getInput().isKeyPressed(Input.KEY_UP) && isInAir == false){
+                y_velocity = 1.0f * delta;
+               isInAir = true;
+            }
+            
+            break;
+            case(2):
+                   
+            // [<-] Links bewegung
+            if(container.getInput().isKeyDown(Input.KEY_A)){
+               pos_x -= 0.5f * delta;
+            }
+            // [<-] Rechts bewegung
+            if(container.getInput().isKeyDown(Input.KEY_D)){
+                pos_x += 0.5f * delta;
+            }
+            // [↕] Oben bewegung
+            if(container.getInput().isKeyPressed(Input.KEY_W) && isInAir == false){
+                y_velocity = 1.0f * delta;
+               isInAir = true;
+            }
+            
+            break;
         }
         
         if(isInAir == true && y_velocity >= -12.0f)

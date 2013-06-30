@@ -12,6 +12,7 @@ public class Jumpignon extends BasicGame {
 public RenderList renderlist;
 private Map map;
 private Player player1;
+private Player player2;
 
 public Jumpignon() {
 //Setzen des Fenstertitels
@@ -35,8 +36,11 @@ public void init(GameContainer container) throws SlickException {
     map.loadMap(1); // Beispiel Karte, kann später dynamisch jede Karte geladen werden
     
     Image p1I = new Image("resources/player_healthy.png");
+    Image p2I = new Image("resources/player_healthy.png");
     player1 = new Player(1, 430, 420-54);
+    player2 = new Player(2, 100, 420-54);
     player1.setImage(p1I);
+    player2.setImage(p2I);
     
 }
 
@@ -47,6 +51,7 @@ public void render(GameContainer container, Graphics g) throws SlickException {
 //    g.drawImage(image, 300, 300);
     renderlist.render(g);
     player1.renderMe(g);
+    player2.renderMe(g);
 }
 
 @Override
@@ -54,9 +59,11 @@ public void update(GameContainer container, int delta) throws SlickException {
 
 //Auf Eingaben von Spieler 1 reagieren
     player1.update(container, delta);
+    player2.update(container, delta);
     
 //Kollisionen prüfen
     renderlist.checkCollisions(player1);
+    renderlist.checkCollisions(player2);
     
 //WENN [ESC] -> Spiel beenden.
     if(container.getInput().isKeyPressed(Input.KEY_ESCAPE)){
