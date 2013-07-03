@@ -158,11 +158,11 @@ public class Player extends RenderItem{
                    
             // [<-] Links bewegung
             if(container.getInput().isKeyDown(Input.KEY_A)){
-               pos_x -= 0.5f * delta;
+               pos_x -= x_velocity * delta;
             }
             // [<-] Rechts bewegung
             if(container.getInput().isKeyDown(Input.KEY_D)){
-                pos_x += 0.5f * delta;
+                pos_x += x_velocity * delta;
             }
             // [↕] Oben bewegung
             if(container.getInput().isKeyDown(Input.KEY_W) && isInAir == false){
