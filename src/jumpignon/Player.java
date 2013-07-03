@@ -189,7 +189,7 @@ public class Player extends RenderItem{
                 case(1):
                     return 100;
                 case(2):
-                    return 700;
+                    return 770;
                 default:
                     return 450;       
             }

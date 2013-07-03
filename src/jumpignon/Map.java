@@ -78,6 +78,57 @@ public class Map {
                 renderlist.addItem(oRect8);
                 
             break;
+                
+            case(2):
+                
+                // Resources laden
+                background = new Image("resources/map1/background.png");
+                Image m2block1 = new Image("resources/map1/rect_01.png");
+                Image m2block2 = new Image("resources/map1/rect_02.png");               
+                Image m2floor = new Image("resources/map1/floor_01.png");
+                
+                
+                // Objekte in die Map setzen
+                Floor m2oFloor = new Floor(100);
+                m2oFloor.setImage(m2floor);    
+                
+                Rectangle m2oRect = new Rectangle(420.0f, 420.0f-75.0f, 75, 75, 0 );
+                m2oRect.setImage(m2block1);                
+                Rectangle m2oRect2 = new Rectangle(220.0f, 420.0f-175.0f, 75, 75, 0 );
+                m2oRect2.setImage(m2block1);                  
+                Rectangle m2oRect3 = new Rectangle(620.0f, 420.0f-175.0f, 75, 75, 0 );
+                m2oRect3.setImage(m2block1);                    
+                Rectangle m2oRect4 = new Rectangle(420.0f, 420.0f-275.0f, 75, 75, 0 );
+                m2oRect4.setImage(m2block1);                     
+                Rectangle m2oRect5 = new Rectangle(220.0f, 420.0f-375.0f, 75, 75, 0 );
+                m2oRect5.setImage(m2block1);                     
+                Rectangle m2oRect6 = new Rectangle(620.0f, 420.0f-375.0f, 75, 75, 0 );
+                m2oRect6.setImage(m2block1);                     
+                Rectangle m2oRect7 = new Rectangle(820.0f, 420.0f-275.0f, 75, 75, 0 );
+                m2oRect7.setImage(m2block1);                     
+                Rectangle m2oRect8 = new Rectangle(20.0f, 420.0f-275.0f, 75, 75, 0 );
+                m2oRect8.setImage(m2block1);
+                
+                DeadlyRectangle rightDeadly = new DeadlyRectangle(925.0f, 420.0f, 350, 75, 0 );
+                rightDeadly.setImage(m2block2);                
+                DeadlyRectangle leftDeadly = new DeadlyRectangle(-350.0f, 420.0f, 350, 75, 0 );
+                leftDeadly.setImage(m2block2);
+                
+                
+                // Objekte in die RenderList mitaufnehmen
+                renderlist.addItem(m2oFloor);
+                renderlist.addItem(m2oRect);
+                renderlist.addItem(m2oRect2);
+                renderlist.addItem(m2oRect3);
+                renderlist.addItem(m2oRect4);
+                renderlist.addItem(m2oRect5);
+                renderlist.addItem(m2oRect6);
+                renderlist.addItem(m2oRect7);
+                renderlist.addItem(m2oRect8);
+                renderlist.addItem(leftDeadly);
+                renderlist.addItem(rightDeadly);
+                
+            break;
                   
         }
         

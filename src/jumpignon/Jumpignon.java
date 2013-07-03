@@ -12,6 +12,7 @@ public class Jumpignon extends BasicGame {
 
 public RenderList renderlist;
 private Map map;
+private int mapID;
 private Player player1;
 private Player player2;
 private Timer timer;
@@ -20,6 +21,7 @@ private boolean tensecs;
 public Jumpignon() {
 //Setzen des Fenstertitels
     super("Jumpignon");
+    mapID = 1;
 }
 public static void main(String[] args) throws SlickException {
     
@@ -65,7 +67,7 @@ public void init(GameContainer container) throws SlickException {
     this.renderlist = new RenderList();
     this.map = new Map(renderlist);
     
-    map.loadMap(1); // Beispiel Karte, kann später dynamisch jede Karte geladen werden
+    map.loadMap(mapID); // Beispiel Karte, kann später dynamisch jede Karte geladen werden
     
     Image p1I1 = new Image("resources/player1/player_healthy.png");
     Image p1I2 = new Image("resources/player1/player_unhealthy.png");
@@ -137,6 +139,17 @@ public void update(GameContainer container, int delta) throws SlickException {
 //Kollisionen prüfen zwischen den Playern
     player1.checkBottomCollisionWithPlayer(player2);
     player2.checkBottomCollisionWithPlayer(player1);
+    
+//WENN [1] -> Map #1 laden
+    if(container.getInput().isKeyPressed(Input.KEY_1)){
+        this.mapID = 1;
+        this.init(container);
+    }
+//WENN [2] -> Map #2 laden
+    if(container.getInput().isKeyPressed(Input.KEY_2)){
+        this.mapID = 2;
+        this.init(container);
+    }
     
 //WENN [R] -> Spiel neustarten.
     if(container.getInput().isKeyPressed(Input.KEY_R)){
