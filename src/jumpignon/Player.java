@@ -131,8 +131,8 @@ public class Player extends RenderItem{
     
     public void update(GameContainer container, int delta)
     {
-        if(isInAir == true) {x_velocity = 0.35f;}
-        else                {x_velocity = 0.5f;}
+        if(isInAir == true) {x_velocity = 0.4f;}
+        else                {x_velocity = 0.6f;}
         
         switch(player_id)
         {
