@@ -6,7 +6,6 @@ import org.newdawn.slick.*;
 public abstract class RenderItem {
     
     RenderItem follower = null;
-    int z_info = 1;
     Image image;
     float pos_x;
     float pos_y;

@@ -17,7 +17,6 @@ public class Timer {
     public long getTime(){
     return System.currentTimeMillis();
     }
-    
     public long getStartTime()
     {
         return starttime;

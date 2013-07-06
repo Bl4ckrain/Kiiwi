@@ -16,8 +16,10 @@ public class Player extends RenderItem{
     private Sound dieSound;
     
     // Infos zum Rendern
-    RenderItem follower;
-    int z_info;
+    // Ein Spieler hat immer 3 Bilder, die er brauch.
+    // Eines für den Zustand in dem er noch "gesund" ist,
+    // eines in dem er "angeschlagen" ist und noch eines 
+    // wenn er nochmals getroffen wurde.
     private Image image;
     private Image image2;
     private Image image3;

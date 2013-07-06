@@ -2,22 +2,35 @@ package jumpignon;
 
 import org.newdawn.slick.*;
 
+/*
+ * Die Klasse Map ist dafür da alle Objekte die in einer Karte platziert
+ * werden zu laden. Dabei können dynamisch mithilfe des Codes neue Karten
+ * hinzugefügt werden. Beispiele dafür finden sich weiter unten.
+ */
+
 public class Map {
     
     private Image background;
     private RenderList renderlist;
     private int mapID;
     
+    /*
+     * Im Konstruktor wird der Map die renderlist aus der Hauptklasse Jumpignon
+     * übergeben, damit diese mit den Objekten der ausgewählten Map gefüllt 
+     * werden kann.
+    */
     public Map(RenderList nRenderlist)
     {
         renderlist = nRenderlist;
     }
     
+    // Hier wird der Hintergrund gezeichnet.
     public void drawMapBackground(Graphics g)
     {
         g.drawImage(background, 0, 0);
     }
     
+    // Alle Objekte der ausgewählten Map wird in die Renderlist geladen
     public void loadMap(int mapid) throws SlickException
     {
         this.mapID = mapid;
@@ -70,6 +83,11 @@ public class Map {
         
     }
     
+    /* 
+     * Geplante Funktion für die Zukunft bei der sich eine Map weiter
+     * verändern kann nach einer gewissen Zeit oder aufgrund von Spieler-
+     * einwirkung.
+    */
     public void update(Timer timer)
     {
         switch(mapID)

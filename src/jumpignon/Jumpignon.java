@@ -23,7 +23,27 @@ public Jumpignon() {
 }
 public static void main(String[] args) throws SlickException {
     
+    /*
+     * Wir benutzen für unser Spiel die extra für Spiele ausgelegte
+     * 2D Bibliothek "Slick2D". Die Basis für Spiele dieser Bibliothek
+     * ist die Klasse AppGameContainer, die alle wichtigen Methoden bereit
+     * stellt, um die Grafikausgabe anzusprechen, Sound zu ermöglichen und 
+     * so weiter..
+     */
+    
 AppGameContainer container = new AppGameContainer(new Jumpignon());
+
+    /*
+     * setDisplayMode stellt die Auflösung für das Fenster ein und ob dieses
+     * im Vollbildschirm gestartet werden soll.
+     * 
+     * setTargetFrameRate sorgt dafür, dass nicht unendlich oft das Bild neu
+     * gezeichnet wird. Wenn ein Rechner besonders schnell ist würde dies 
+     * dafür sorgen, dass unnötig Leistung verschwendet wird. Da 75 Frames pro 
+     * Sekunde für das Spiel vollkommen ausreichen ist dies der Maximalwert.
+     * 
+     * setShowFPS sorgt dafür, dass die aktuelle Framerate nicht angezeigt wird.
+     */
     container.setDisplayMode(925, 520, false);
     container.setTargetFrameRate(75);           // Maximale FPS: 75
     container.setShowFPS(false);
@@ -31,10 +51,15 @@ AppGameContainer container = new AppGameContainer(new Jumpignon());
 
 }
 
+/*
+ * init() ist eine Methode von BasicGame und wird ganz am Anfang ein 
+ * einziges Mal ausgeführt. Hier wird die Map, also die Karte geladen,
+ * auf der sich die Spieler bewegen mitsamt allen Grafiken und Sounds.
+ */
+
+
 @Override
 public void init(GameContainer container) throws SlickException {
-//Bild logo.png aus dem Verzeichnis restest laden
-//    image = new Image("resources/player_healthy.png");
     
     this.timer = new Timer();
     this.renderlist = new RenderList();
@@ -57,6 +82,19 @@ public void init(GameContainer container) throws SlickException {
     
 }
 
+/*
+ *  Die Methode render() ist ebenso eine Methode der Klasse BasicGame und wird
+ *  jedes Mal beim Durchlaufen der Spielschleife ausgeführt um das Bild neu zu
+ *  zeichnen. 
+ *  Die Klasse BasicGame führt diese Schleife, die die folgende Logik ausführt:
+ *  1. Laden der Ressourcen, wie Grafiken oder Sounds       | hier: init()
+ *  2. WÄHREND(ESCPAE WURDE NICHT GEDRÜCKT)
+ *      {
+ *          2.1 Auf Eingaben des Spielers reagieren         | hier: update()
+ *          2.2 Das Bild neu zeichnen und darstellen        | hier: render()
+ *      }
+ */
+
 @Override
 public void render(GameContainer container, Graphics g) throws SlickException {
 //Text und Bild zeichnen
@@ -73,6 +111,14 @@ public void render(GameContainer container, Graphics g) throws SlickException {
     g.setColor(Color.blue);
     g.drawString("Spieler 2: " + player2.showKills() + " / " + player2.showDeaths(), 750, 440);
 }
+
+/*
+ *  Auch update() ist eine Methode von BasicGame, die dafür sorgt die Spiel-
+ *  logik voran zu treiben und auf Eingaben des Spielers zu reagieren.
+ *  Wird beispielsweise eine Taste gedrückt, so soll sich der Spieler beispiels-
+ *  weise bewegen. Außerdem soll überprüft werden ob es eine Kollision gab und 
+ *  entsprechend darauf reagiert werden.
+ */
 
 @Override
 public void update(GameContainer container, int delta) throws SlickException {
